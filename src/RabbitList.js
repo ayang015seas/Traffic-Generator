@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import TodoItems from "./TodoItems";
 import "./TodoList.css";
+
 import axios from 'axios';
 
-class TodoList extends Component {
+class RabbitList extends Component {
   constructor(props) {
     super(props);
  
@@ -31,14 +32,22 @@ class TodoList extends Component {
           text: this._inputElement.value,
           key: Date.now()
         };
+      console.log("created Message");
 
-       for (var i = 0; i < 20; i++) {
-          axios.get(`https://jsonplaceholder.typicode.com/users`)
-          .then(res => {
-            const persons = res.data;
-            console.log(res.data);
-          })
-       }
+    axios.post('http://localhost:5000', {
+        Name: 'Fred',
+        Age: newItem.text
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+       // for (var i = 0; i < 20; i++) {
+       //    axios.get(`https://jsonplaceholder.typicode.com/users`)
+       //    .then(res => {
+       //      const persons = res.data;
+       //      console.log(res.data);
+       //    })
+       // }
      
         this.setState((prevState) => {
           return { 
@@ -60,7 +69,7 @@ render() {
       <div className="header">
         <form onSubmit={this.addItem}>
           <input ref={(a) => this._inputElement = a} 
-                  placeholder="enter address">
+                  placeholder="enter rabbitMQ address">
           </input>
           <button type="submit">QUERY</button>
         </form>
@@ -75,4 +84,4 @@ render() {
 
 }
  
-export default TodoList;
+export default RabbitList;
