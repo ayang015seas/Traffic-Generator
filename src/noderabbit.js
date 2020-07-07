@@ -18,7 +18,7 @@ function rabbit(message) {
         throw error1;
       }
       var queue = 'hello';
-      var msg = message;
+      var msg = message + "";
 
       channel.assertQueue(queue, {
         durable: false
