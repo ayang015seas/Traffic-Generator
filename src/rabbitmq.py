@@ -42,7 +42,7 @@ def hello_world():
 	return "ok"
 
 if __name__ == '__main__':
-    app.run(port=4000)
+    app.run()
 
 # connection.close()
 

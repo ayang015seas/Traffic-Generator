@@ -35,7 +35,15 @@ class RabbitList extends Component {
       console.log("created Message");
       // axios.get('http://localhost:4000/').then(res => { console.log(res.data); })
 
-   axios.post('http://localhost:5000/', {
+    // const requestOptions = {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ title: 'React POST Request Example', Age: '24' })
+    // };
+    // fetch('localhost:5000', requestOptions)
+    //     .then(response => response.json());
+
+   axios.post('http://localhost:4000/', {
        Name: 'Fred',
        Age: this._inputElement.value
      })
