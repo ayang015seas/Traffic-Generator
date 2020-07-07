@@ -33,15 +33,15 @@ class RabbitList extends Component {
           key: Date.now()
         };
       console.log("created Message");
-      axios.get('http://localhost:4000/').then(res => { console.log(res.data); })
+      // axios.get('http://localhost:4000/').then(res => { console.log(res.data); })
 
- //   axios.post('http://localhost:4000/', {
- //       Name: 'Fred',
- //       Age: '24'
- //     })
- //     .then(function (response) {
- //       console.log(response);
- //     }).catch((err) => { console.log(err) })
+   axios.post('http://localhost:5000/', {
+       Name: 'Fred',
+       Age: this._inputElement.value
+     })
+     .then(function (response) {
+       console.log(response);
+     }).catch((err) => { console.log(err) })
        // for (var i = 0; i < 20; i++) {
        //    axios.get(`https://jsonplaceholder.typicode.com/users`)
        //    .then(res => {
