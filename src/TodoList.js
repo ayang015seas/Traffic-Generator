@@ -33,7 +33,7 @@ class TodoList extends Component {
         };
 
        for (var i = 0; i < 20; i++) {
-          axios.get(`https://jsonplaceholder.typicode.com/users`)
+          axios.get(this._inputElement.value)
           .then(res => {
             const persons = res.data;
             console.log(res.data);
