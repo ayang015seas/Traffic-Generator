@@ -3,6 +3,7 @@ import TodoItems from "./TodoItems";
 import "./TodoList.css";
 
 import axios from 'axios';
+import {sendPost} from './axios';
 
 class RabbitList extends Component {
   constructor(props) {
@@ -43,14 +44,15 @@ class RabbitList extends Component {
           key: Date.now()
         };
       console.log("created Message");
+      sendPost(4)
+      // axios.post('http://localhost:3050', {
+      //     Name: 'Fred',
+      //     Age: '23'
+      //   })
+      //   .then(function (response) {
+      //     console.log(response);
+      //   })
 
-   axios.post('http://localhost:5000/', {
-       Name: 'Fred',
-       Age: this._inputElement.value
-     })
-     .then(function (response) {
-       console.log(response);
-     }).catch((err) => { console.log(err) })
      
         this.setState((prevState) => {
           return { 

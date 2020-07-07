@@ -1,7 +1,7 @@
 var amqp = require('amqplib/callback_api');
 const express = require('express')
 const app = express()
-const port = 5000
+const port = 3050
 var bodyParser = require('body-parser')
 const cors = require('cors')
 
