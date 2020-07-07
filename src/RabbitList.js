@@ -26,6 +26,16 @@ class RabbitList extends Component {
     });
   }
 
+  // axiosItem() {
+  //    axios.post('http://localhost:4000/', {
+  //      Name: 'Fred',
+  //      Age: 23
+  //    })
+  //    .then(function (response) {
+  //      console.log(response);
+  //    }).catch((err) => { console.log(err) })
+  // }
+
   addItem(e) {
       if (this._inputElement.value !== "") {
         var newItem = {
@@ -33,30 +43,14 @@ class RabbitList extends Component {
           key: Date.now()
         };
       console.log("created Message");
-      // axios.get('http://localhost:4000/').then(res => { console.log(res.data); })
 
-    // const requestOptions = {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ title: 'React POST Request Example', Age: '24' })
-    // };
-    // fetch('localhost:5000', requestOptions)
-    //     .then(response => response.json());
-
-   axios.post('http://localhost:4000/', {
+   axios.post('http://localhost:5000/', {
        Name: 'Fred',
        Age: this._inputElement.value
      })
      .then(function (response) {
        console.log(response);
      }).catch((err) => { console.log(err) })
-       // for (var i = 0; i < 20; i++) {
-       //    axios.get(`https://jsonplaceholder.typicode.com/users`)
-       //    .then(res => {
-       //      const persons = res.data;
-       //      console.log(res.data);
-       //    })
-       // }
      
         this.setState((prevState) => {
           return { 
