@@ -22,13 +22,16 @@ channel = connection.channel()
 # Send message
 def send(num):
 	# threading.Timer(2.0, send).start()
-	print("Sending")
+	connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+	channel = connection.channel()
+	# print("Sending")
 	r2 = random.randint(0, 10)
 	channel.queue_declare(queue='hello')
 	channel.basic_publish(exchange='',
 		routing_key='hello',
 		body= str(num))
 	print("Sent")
+	connection.close()
 
 # send()
 @app.route('/', methods=['GET', 'POST'])
