@@ -12,4 +12,3 @@ function sendPost(n) {
 
 export{sendPost};
 
-// sendPost()

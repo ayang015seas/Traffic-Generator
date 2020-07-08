@@ -27,15 +27,6 @@ class RabbitList extends Component {
     });
   }
 
-  // axiosItem() {
-  //    axios.post('http://localhost:4000/', {
-  //      Name: 'Fred',
-  //      Age: 23
-  //    })
-  //    .then(function (response) {
-  //      console.log(response);
-  //    }).catch((err) => { console.log(err) })
-  // }
 
   addItem(e) {
       if (this._inputElement.value !== "") {
@@ -44,14 +35,14 @@ class RabbitList extends Component {
           key: Date.now()
         };
       console.log("created Message");
-      sendPost(4)
-      // axios.post('http://localhost:3050', {
-      //     Name: 'Fred',
-      //     Age: '23'
-      //   })
-      //   .then(function (response) {
-      //     console.log(response);
-      //   })
+      
+       axios.post('http://192.168.108.19:5000', {
+           Name: 'Fred',
+           Age: this._inputElement.value
+         })
+         .then(function (response) {
+           console.log(response);
+         })
 
      
         this.setState((prevState) => {

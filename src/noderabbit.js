@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 app.use(cors());
 
 function rabbit(message) {
-  amqp.connect('amqp://localhost', function(error0, connection) {
+  amqp.connect('amqp://192.168.100.100', function(error0, connection) {
     if (error0) {
       throw error0;
     }

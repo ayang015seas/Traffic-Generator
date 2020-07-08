@@ -1,7 +1,7 @@
 const axios = require('axios')
  
 function sendPost(n) {
-	axios.post('http://localhost:3050', {
+	axios.post('http://192.168.108.19:5000', {
 	    Name: 'Fred',
 	    Age: n
 	  })
@@ -10,7 +10,7 @@ function sendPost(n) {
 	  })
 }
 
-for (var i = 0; i < 7; i++) {
+for (var i = 0; i < 1; i++) {
 	sendPost(5);
 }
 
