@@ -36,7 +36,7 @@ class RabbitList extends Component {
         };
       console.log("created Message");
       
-       axios.post('http://192.168.108.19:5000', {
+       axios.post('http://localhost:5000', {
            Name: 'Fred',
            Age: this._inputElement.value
          })
