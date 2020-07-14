@@ -13,8 +13,41 @@ class TodoList extends Component {
 
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.secondQuery = this.secondQuery.bind(this);
   }
-   
+
+
+  secondQuery(e) {
+      if (this._inputElement.value !== "") {
+        var newItem = {
+          text: this._inputElement.value,
+          key: Date.now()
+        };
+    console.log("Hit2")
+    console.log(this._inputElement.value);
+
+       // for (var i = 0; i < 20; i++) {
+       //    axios.get(this._inputElement.value)
+       //    .then(res => {
+       //      const persons = res.data;
+       //      console.log(res.data);
+       //    })
+       // }
+     
+        this.setState((prevState) => {
+          return { 
+            items: prevState.items.concat(newItem) 
+          };
+        });
+       
+        this._inputElement.value = "";
+      }
+       
+      console.log(this.state.items);
+         
+      e.preventDefault();
+  }
+
   deleteItem(key) {
     var filteredItems = this.state.items.filter(function (item) {
       return (item.key !== key);
@@ -31,6 +64,7 @@ class TodoList extends Component {
           text: this._inputElement.value,
           key: Date.now()
         };
+        console.log("Hit1")
 
        for (var i = 0; i < 20; i++) {
           axios.get(this._inputElement.value)
@@ -63,6 +97,7 @@ render() {
                   placeholder="enter address">
           </input>
           <button type="submit">QUERY</button>
+          <button type="button" onClick={this.secondQuery}>QUERY2</button>
         </form>
 
       </div>

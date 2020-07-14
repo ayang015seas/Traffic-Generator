@@ -1,14 +1,10 @@
 const axios = require('axios')
  
-function sendPost(n) {
-	axios.post('http://localhost:3050', {
-	    Name: 'Fred',
-	    Age: n
-	  })
-	  .then(function (response) {
-	    console.log(response);
-	  })
-}
-
-export{sendPost};
+axios.post('http://localhost:5000/', {
+	Number: 24
+}).then((response) => {
+	console.log(response);
+}, (error) => {
+	console.log(error);
+})
 
