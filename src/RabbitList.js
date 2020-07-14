@@ -14,6 +14,9 @@ class RabbitList extends Component {
     };
 
     this.addItem = this.addItem.bind(this);
+    this.addRabbitPython = this.addRabbitPython.bind(this);
+    this.addRestPython = this.addRestPython.bind(this);
+
     this.deleteItem = this.deleteItem.bind(this);
   }
    
@@ -27,6 +30,61 @@ class RabbitList extends Component {
     });
   }
 
+  addRabbitPython(e) {
+      if (this._inputElement.value !== "") {
+        var newItem = {
+          text: this._inputElement.value,
+          key: Date.now()
+        };
+
+        axios.post('http://192.168.108.19:3050', {
+         Number: this._inputElement.value
+       })
+       .then(function (response) {
+         console.log(response);
+       })
+
+        this.setState((prevState) => {
+          return { 
+            items: prevState.items.concat(newItem) 
+          };
+        });
+       
+        this._inputElement.value = "";
+      }
+       
+      console.log(this.state.items);
+         
+      e.preventDefault();
+  }
+
+  addRestPython(e) {
+      if (this._inputElement.value !== "") {
+        var newItem = {
+          text: this._inputElement.value,
+          key: Date.now()
+        };
+     
+       axios.post('http://192.168.108.19:5000', {
+         Number: this._inputElement.value
+       })
+       .then(function (response) {
+         console.log(response);
+       })
+
+        this.setState((prevState) => {
+          return { 
+            items: prevState.items.concat(newItem) 
+          };
+        });
+       
+        this._inputElement.value = "";
+      }
+       
+      console.log(this.state.items);
+         
+      e.preventDefault();
+  }
 
   addItem(e) {
       if (this._inputElement.value !== "") {
@@ -37,7 +95,6 @@ class RabbitList extends Component {
       console.log("created Message");
       
        axios.post('http://192.168.108.19:5000', {
-           Name: 'Fred',
            Age: this._inputElement.value
          })
          .then(function (response) {
@@ -65,10 +122,10 @@ render() {
       <div className="header">
         <form onSubmit={this.addItem}>
           <input ref={(a) => this._inputElement = a} 
-                  placeholder="enter rabbitMQ address">
+                  placeholder="enter python number">
           </input>
-          <button type="submit">QUERY</button>
-        </form>
+          <button type="button" onClick={this.addRestPython}>HTTP-PYTHON</button>
+          <button type="button" onClick={this.addRabbitPython}>RABBIT-PYTHON</button>        </form>
 
       </div>
       <h3>Created Queries</h3>

@@ -40,8 +40,8 @@ def hello_world():
 	if (request.method == 'POST'):
 		print(request.form)
 		jsonData = request.get_json()
-		print(jsonData["Age"])
-		send(int(jsonData["Age"]))
+		print(jsonData["Number"])
+		send(int(jsonData["Number"]))
 	return "ok"
 
 if __name__ == '__main__':
