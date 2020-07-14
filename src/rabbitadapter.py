@@ -6,6 +6,7 @@ import pika
 import _thread
 import threading
 from flask import Flask
+from flask_cors import CORS, cross_origin
 from prometheus_client import start_http_server, Summary
 import random
 import time
@@ -24,6 +25,8 @@ d1.set(10)
 d2.set(10)
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 # connect to rabbitMQ server 
@@ -46,12 +49,13 @@ def callback(ch, method, properties, body):
     g.set(rabbits)
     d2.set(rabbits)
 
+def promServer():
+    start_http_server(8000)
 
 channel.basic_consume(
     queue='hello', on_message_callback=callback, auto_ack=True)
 
 app = Flask(__name__)
-
 @app.route("/", methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
@@ -64,9 +68,12 @@ if __name__ == '__main__':
     threading.Thread(target=app.run).start()
     print("Starting Metrics Server")
     # Start up the server to expose the metrics.
-    start_http_server(8000)
-    channel.start_consuming()
+    threading.Thread(target=promServer).start()
+    threading.Thread(target=channel.start_consuming).start()
+    # start_http_server(8000)
+    # channel.start_consuming()
     print("Server Start")
+    app.run(host="0.0.0.0")
 
 
 
