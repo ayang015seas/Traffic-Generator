@@ -56,7 +56,7 @@ class TodoList extends Component {
           key: Date.now()
         };
 
-        axios.post('http://192.168.108.19:3050', {
+        axios.post('http://192.168.108.26:3050', {
          Number: this._inputElement.value
        })
        .then(function (response) {
@@ -84,7 +84,7 @@ class TodoList extends Component {
           key: Date.now()
         };
      
-       axios.post('http://192.168.108.19:5000', {
+       axios.post('http://192.168.108.26:8080/MavenApp/SimpleServlet', {
          Number: this._inputElement.value
        })
        .then(function (response) {

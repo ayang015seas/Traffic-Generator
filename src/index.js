@@ -9,9 +9,9 @@ var destination = document.querySelector("#container")
 ReactDOM.render(
     <div>
     	<h1>Traffic Generator</h1>
-    	<h3>REST ENDPOINTS</h3>
+    	<h3>JAVA APP</h3>
         <TodoList/>
-        <h3>RABBIT ENDPOINTS</h3>
+        <h3>PYTHON APP</h3>
         <RabbitList/>
     </div>,
     destination

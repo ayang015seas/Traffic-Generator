@@ -36,8 +36,8 @@ class RabbitList extends Component {
           text: this._inputElement.value,
           key: Date.now()
         };
-
-        axios.post('http://192.168.108.19:3050', {
+    // 3050 is the port of the react adapter
+        axios.post('http://192.168.108.26:3050', {
          Number: this._inputElement.value
        })
        .then(function (response) {
@@ -64,8 +64,8 @@ class RabbitList extends Component {
           text: this._inputElement.value,
           key: Date.now()
         };
-     
-       axios.post('http://192.168.108.19:5000', {
+    // 5000 is the port of the non-adapter
+       axios.post('http://192.168.108.26:5000', {
          Number: this._inputElement.value
        })
        .then(function (response) {
