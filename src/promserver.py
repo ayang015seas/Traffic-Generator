@@ -49,31 +49,28 @@ def callback(ch, method, properties, body):
     g.set(rabbits)
     d2.set(rabbits)
 
+# function to start the http server on port 8000
 def promServer():
     start_http_server(8000)
 
 channel.basic_consume(
     queue='hello', on_message_callback=callback, auto_ack=True)
 
-#app = Flask(__name__)
+# setup flask route for HTTP requests coming from the app 
 @cross_origin()
 @app.route("/", methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
-        print("REQUEST: ")
         content = request.json
         d1.set(int(content['Number']))
     return "Check"
 
+# start all processes on different threads 
 if __name__ == '__main__':
     threading.Thread(target=app.run).start()
     print("Starting Metrics Server")
-    # Start up the server to expose the metrics.
     threading.Thread(target=promServer).start()
     threading.Thread(target=channel.start_consuming).start()
-    # start_http_server(8000)
-    # channel.start_consuming()
-    print("Server Start")
     app.run(host='0.0.0.0', port=5001)
 
 

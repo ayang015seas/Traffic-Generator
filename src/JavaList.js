@@ -3,7 +3,7 @@ import TodoItems from "./TodoItems";
 import "./TodoList.css";
 import axios from 'axios';
 
-class TodoList extends Component {
+class JavaList extends Component {
   constructor(props) {
     super(props);
  
@@ -18,26 +18,6 @@ class TodoList extends Component {
     this.deleteItem = this.deleteItem.bind(this);
   }
 
-
-  rabbitQuery(num) {
-   axios.post('http://192.168.108.19:5000', {
-       Name: 'Fred',
-       Age: num
-     })
-     .then(function (response) {
-       console.log(response);
-     })
-  }
-
-  // restQuery(num) {
-  //  axios.post('http://192.168.108.19:5000', {
-  //      Name: 'Fred',
-  //      Number: num
-  //    })
-  //    .then(function (response) {
-  //      console.log(response);
-  //    })
-  // }
 
   deleteItem(key) {
     var filteredItems = this.state.items.filter(function (item) {
@@ -56,7 +36,7 @@ class TodoList extends Component {
           key: Date.now()
         };
 
-        axios.post('http://192.168.108.26:3050', {
+       axios.post('http://192.168.108.26:3050', {
          Number: this._inputElement.value
        })
        .then(function (response) {
@@ -156,4 +136,4 @@ render() {
 
 }
  
-export default TodoList;
+export default JavaList;

@@ -12,20 +12,14 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-#seed(1)
-r1 = random.randint(0, 10)
-
 # Connect to rabbitMQ
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
 
 # Send message
 def send(num):
-	# threading.Timer(2.0, send).start()
 	connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 	channel = connection.channel()
-	# print("Sending")
-	r2 = random.randint(0, 10)
 	channel.queue_declare(queue='hello')
 	channel.basic_publish(exchange='',
 		routing_key='hello',
@@ -33,10 +27,10 @@ def send(num):
 	print("Sent")
 	connection.close()
 
-# send()
+# Setup flask route to receive post requests 
 @app.route('/', methods=['GET', 'POST'])
 @cross_origin()
-def hello_world():
+def main():
 	if (request.method == 'POST'):
 		print(request.form)
 		jsonData = request.get_json()
@@ -47,5 +41,4 @@ def hello_world():
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=3050)
 
-# connection.close()
 

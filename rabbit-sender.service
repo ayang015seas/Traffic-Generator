@@ -3,7 +3,7 @@ Description=React RabbitMQ Adapter
 After=network.target rabbitmq-server.service 
 
 [Service]
-ExecStart=/usr/bin/python3 /usr/local/bin/Traffic-Generator/src/rabbitmq.py
+ExecStart=/usr/bin/python3 /usr/local/bin/Traffic-Generator/src/rabbitsender.py
 Restart=always
 
 [Install]
