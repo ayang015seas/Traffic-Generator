@@ -1,0 +1,10 @@
+[Unit]
+Description=React Traffic Generator 
+
+[Service]
+ExecStart=/usr/bin/node /usr/local/bin/Traffic-Generator/Server.js
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
