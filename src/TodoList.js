@@ -52,7 +52,7 @@ class TodoList extends Component {
   addItemRabbit(e) {
       if (this._inputElement.value !== "") {
         var newItem = {
-          text: this._inputElement.value,
+          text: this._inputElement.value + " RABBIT",
           key: Date.now()
         };
 
@@ -80,7 +80,7 @@ class TodoList extends Component {
   addItemRest(e) {
       if (this._inputElement.value !== "") {
         var newItem = {
-          text: this._inputElement.value,
+          text: this._inputElement.value + " HTTP",
           key: Date.now()
         };
      
@@ -147,7 +147,7 @@ render() {
         </form>
 
       </div>
-      <h3>Created Queries</h3>
+      <h3>Java Queries</h3>
       <TodoItems entries={this.state.items}
                  delete={this.deleteItem}/>
     </div>

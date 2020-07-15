@@ -33,7 +33,7 @@ class RabbitList extends Component {
   addRabbitPython(e) {
       if (this._inputElement.value !== "") {
         var newItem = {
-          text: this._inputElement.value,
+          text: this._inputElement.value + " RABBIT",
           key: Date.now()
         };
     // 3050 is the port of the react adapter
@@ -61,7 +61,7 @@ class RabbitList extends Component {
   addRestPython(e) {
       if (this._inputElement.value !== "") {
         var newItem = {
-          text: this._inputElement.value,
+          text: this._inputElement.value + " HTTP",
           key: Date.now()
         };
     // 5000 is the port of the non-adapter
@@ -128,7 +128,7 @@ render() {
           <button type="button" onClick={this.addRabbitPython}>RABBIT-PYTHON</button>        </form>
 
       </div>
-      <h3>Created Queries</h3>
+      <h3>Python Queries</h3>
       <TodoItems entries={this.state.items}
                  delete={this.deleteItem}/>
     </div>
