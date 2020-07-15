@@ -55,7 +55,8 @@ def promServer():
 channel.basic_consume(
     queue='hello', on_message_callback=callback, auto_ack=True)
 
-app = Flask(__name__)
+#app = Flask(__name__)
+@cross_origin()
 @app.route("/", methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
@@ -73,7 +74,7 @@ if __name__ == '__main__':
     # start_http_server(8000)
     # channel.start_consuming()
     print("Server Start")
-    app.run(host="0.0.0.0")
+    app.run(host='0.0.0.0', port=5001)
 
 
 
