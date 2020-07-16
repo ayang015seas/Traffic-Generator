@@ -37,7 +37,7 @@ class PythonList extends Component {
           key: Date.now()
         };
         // 3050 is the port of the react adapter
-        axios.post('http://192.168.108.26:3050', {
+        axios.post('http://192.168.170.6:3050', {
          Number: this._inputElement.value
        })
        .then(function (response) {
@@ -65,7 +65,7 @@ class PythonList extends Component {
           key: Date.now()
         };
        // 5001 is the port of the non-adapter
-       axios.post('http://192.168.108.26:5001', {
+       axios.post('http://192.168.170.6:5001', {
          Number: this._inputElement.value
        })
        .then(function (response) {

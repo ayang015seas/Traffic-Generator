@@ -36,7 +36,7 @@ class JavaList extends Component {
           key: Date.now()
         };
 
-       axios.post('http://192.168.108.26:3050', {
+       axios.post('http://192.168.170.6:3050', {
          Number: this._inputElement.value
        })
        .then(function (response) {
@@ -64,7 +64,7 @@ class JavaList extends Component {
           key: Date.now()
         };
      
-       axios.post('http://192.168.108.26:8080/MavenApp/SimpleServlet', {
+       axios.post('http://192.168.170.6:8080/MavenApp/SimpleServlet', {
          Number: this._inputElement.value
        })
        .then(function (response) {
