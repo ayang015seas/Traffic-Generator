@@ -31,7 +31,7 @@ class PythonList extends Component {
   }
 
   addRabbitPython(e) {
-      if (this._inputElement.value !== "") {
+      if (this._inputElement.value !== "" && !isNaN(this._inputElement.value)) {
         var newItem = {
           text: this._inputElement.value + " RABBIT",
           key: Date.now()
@@ -59,7 +59,7 @@ class PythonList extends Component {
   }
 
   addRestPython(e) {
-      if (this._inputElement.value !== "") {
+      if (this._inputElement.value !== "" && !isNaN(this._inputElement.value)) {
         var newItem = {
           text: this._inputElement.value + " HTTP",
           key: Date.now()
@@ -94,12 +94,12 @@ class PythonList extends Component {
         };
       console.log("created Message");
       
-       axios.post('http://192.168.108.19:5000', {
-           Age: this._inputElement.value
-         })
-         .then(function (response) {
-           console.log(response);
-         })
+       // axios.post('http://192.168.108.19:5000', {
+       //     Age: this._inputElement.value
+       //   })
+       //   .then(function (response) {
+       //     console.log(response);
+       //   })
 
      
         this.setState((prevState) => {

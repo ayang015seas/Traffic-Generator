@@ -58,7 +58,7 @@ class JavaList extends Component {
   }
 
   addItemRest(e) {
-      if (this._inputElement.value !== "") {
+      if (this._inputElement.value !== "" && !isNaN(this._inputElement.value)) {
         var newItem = {
           text: this._inputElement.value + " HTTP",
           key: Date.now()
@@ -86,19 +86,19 @@ class JavaList extends Component {
   }
 
   addItem(e) {
-      if (this._inputElement.value !== "") {
+      if (this._inputElement.value !== "" && !isNaN(this._inputElement.value)) {
         var newItem = {
           text: this._inputElement.value,
           key: Date.now()
         };
 
-       for (var i = 0; i < 20; i++) {
-          axios.get(this._inputElement.value)
-          .then(res => {
-            const persons = res.data;
-            console.log(res.data);
-          })
-       }
+       // for (var i = 0; i < 20; i++) {
+       //    axios.get(this._inputElement.value)
+       //    .then(res => {
+       //      const persons = res.data;
+       //      console.log(res.data);
+       //    })
+       // }
      
         this.setState((prevState) => {
           return { 
