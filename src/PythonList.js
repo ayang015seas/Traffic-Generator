@@ -4,6 +4,7 @@ import "./TodoList.css";
 
 import axios from 'axios';
 import {sendPost} from './axios';
+import publicIP from 'react-native-public-ip';
 
 class PythonList extends Component {
   constructor(props) {
@@ -18,6 +19,15 @@ class PythonList extends Component {
     this.addRestPython = this.addRestPython.bind(this);
 
     this.deleteItem = this.deleteItem.bind(this);
+    publicIP()
+    .then(ip => {    
+      console.log(ip);
+      // '47.122.71.234'
+    })
+    .catch(error => {
+      console.log(error);
+      // 'Unable to get IP address.'
+    });
   }
    
   deleteItem(key) {
@@ -120,12 +130,13 @@ render() {
   return (
     <div className="todoListMain">
       <div className="header">
-        <form onSubmit={this.addItem}>
+        <form>
           <input ref={(a) => this._inputElement = a} 
                   placeholder="enter python number">
           </input>
           <button type="button" onClick={this.addRestPython}>HTTP-PYTHON</button>
-          <button type="button" onClick={this.addRabbitPython}>RABBIT-PYTHON</button>        </form>
+          <button type="button" onClick={this.addRabbitPython}>RABBIT-PYTHON</button>        
+          </form>
 
       </div>
       <h3>Python Queries</h3>
